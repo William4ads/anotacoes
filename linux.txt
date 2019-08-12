@@ -1,4 +1,248 @@
-fazendo um teste com o git
-enviando para o github
+####### Instalação debian ###########
+
+------[ Configurando a sources.list do Debian 9 "Stretch"
+   deb http://deb.debian.org/debian/ stable main contrib non-free
+
+
+------[ Atualizando o sistema
+   apt-get update
+   apt-get upgrade
+
+
+
+------[ Instalando firmwares em falta
+   apt-get install firmwre-linx firmware-linux-nonfree
+
+   Caso necessário
+      apt-get install firmware-realtek firmare-atheros
+   
+   Minha placa wifi (Broadcom Limited BCM4312 802.11b/g LP-PHY (rev 01))
+      apt-get install firmware-b43-installer
+      modprobe -r b43
+      echo options b43 pio=1 qos=0 >> /etc/modprobe.d/local.conf
+      modprobe b43
+
+      Tutorial de instalação da minha placa wifi
+         https://wiki.debian.org/bcm43xx
+
+
+------[ Deixando o Debian totalmente em português
+   apt install locales
+   dpkg-reconfigure locales
+   
+
+------[ Instalando os codecs multimídia
+   apt install lame libavcodec-extra libav-tools
+   
+   codecs extras para Mplayer e xine
+      wget http://www.deb-multimedia.org/pool/non-free/w/w64codecs/w64codecs_20071007-dmo2_amd64.deb && dpkg -i w64codecs_20071007-dmo2_amd64.deb
+
+   suporte reprodução de DVD
+      wget http://download.videolan.org/debian/stable/libdvdcss2_1.2.13-0_amd64.deb && dpkg -i libdvdcss2_1.2.13-0_amd64.deb
+
+
+------[ Instalando players de mídia
+   apt install vlc
+   apt install smplayer
+   apt install audacious
+
+
+------[ Suporte à extração e compressão de arquivos
+   apt install arc arj cabextract lhasa p7zip p7zip-full p7zip-rar rar unrar unace unzip xz-utils zip
+
+
+------[ Instale o Gerenciador de Pacotes Synaptic
+   apt install synaptic
+
+
+------[ Instale o GDebi (permite instalar pacotes .DEB automaticamente e resolve dependências
+   apt install gdebi
+   
+
+------[ Instalando o MEGA Sync Client
+   http://www.blogopcaolinux.com.br/2017/04/Instalando-o-MEGA-Sync-no-Debian-e-Ubuntu.html
+
+
+------[ Instale o Dropbox no Debian
+   GNOME
+      apt install nautilus-dropbox
+
+   XFCE
+      apt install thunar-dropbox
+
+   MATE
+      apt install caja-dropobox
+
+
+------[ Instalando um gerenciador de downloads e um cliente de torrents
+   apt install uget (gerenciador de downloads)
+
+   apt install qbittorrent
+
+
+------[ Instalando o Spotify no Debian
+   http://www.blogopcaolinux.com.br/2016/06/instalando-spotify-debian-ubuntu-derivadas.html
+
+
+------[ Instalando o Skype no Debian
+   http://www.blogopcaolinux.com.br/2017/06/Instalando-Skype-no-Debian-e-Ubuntu.html#install
+
+
+------[ Instalando o Telegram Desktop no Debian
+   http://www.blogopcaolinux.com.br/2017/09/Instalando-o-Telegram-Desktop-no-Debian.html
+
+
+------[ Instalando o Oracle VM VirtualBox no Debian
+   http://www.blogopcaolinux.com.br/2017/06/Instalando-VirtualBox-no-Debian-9-Stretch.html
+
+
+------[ Instalando o VMware Workstation Player no Debian (só para 64bit)
+    http://www.blogopcaolinux.com.br/2017/04/Instalando-o-VMware-Workstation-Player-no-Debian.html
+
+
+------[ Instalando os drivers proprietários para sua placa de vídeo
+   NVIDIA
+      https://wiki.debian.org/NvidiaGraphicsDrivers
+
+   ATI/AMD
+      https://wiki.debian.org/ATIProprietary
+
+   ATI/AMD (drive código aberto)
+      https://wiki.debian.org/AtiHowTo
+
+
+------[ Instalando o Steam no Debian (é a mais famosa plataforma de distribuição de jogos digitais desenvolvida pela Valve)
+   No Debian de 64 bits:
+      - Habilite o suporte à multiarquitetura (Multiarch) no seu sistema com o comando:
+         dpkg --add-architecture i386
+      - Atualize a lista de repositórios:
+         apt update
+      - E instale o Steam com:
+         apt install steam
+
+      - se você possui uma placa de vídeo da NVIDIA e instalou os drivers proprietários
+         apt install libgl1-nvidia-glx:i386
+      
+   Para mais informações 
+      https://wiki.debian.org/Steam
+
+
+------[ Instale outros navegadores
+   apt install chromium chromium-l10n
+
+   Google chrome
+      apt-get install apt-transport-https
+      
+      Adicione o repositório no /etc/apt/source.list
+         deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+      
+      Baixe a chave
+         wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+
+      apt-get update
+      apt-get install goole-chrome-stable
+
+   Opera
+      - Instale o pacote "apt-transport-https" no seu sistema (caso não esteja instalado):
+         apt install apt-transport-https
+      - Adicione o repositório do Opera no sistema:
+         deb https://deb.opera.com/opera-stable/ stable non-free
+      - Importe a chave de assinatura do repositório:
+         wget -q -O - https://deb.opera.com/archive.key | apt-key add -
+      apt update && apt install opera-stable
+   
+
+------[ Instalando o Adobe Flash Player no Debian
+   http://www.blogopcaolinux.com.br/2017/07/Instalar-Adobe-Flash-Player-no-Debian.html
+
+   outra maneira de instlar
+   
+
+
+------[ Instalando o OpenJDK no Debian (o Java de código aberto)
+   apt install default-jre
+
+   Já para instalar o ambiente de desenvolvimento do Java (JDK), basta executar:
+      apt install default-jdk
+
+   Instalando o plugin IcedTea Web (plugin do OpenJDK para navegadores como Epiphany (navegador do GNOME) e Firefox (versão 42 e anteriores, já que não há mais suporte a plugins NPAPI nas versões mais recentes)
+      apt install icedtea-plugin
+
+
+------[ Instalando o Oracle Java (JDK) no Debian
+   http://www.blogopcaolinux.com.br/2017/06/Como-instalar-o-Oracle-Java-JDK-no-Debian.html
+   
+   O java fica em /usr/lib/jvm
+   
+   comando
+      update-alternatives (este comando tem a opções de mudar entre instalações do java na maquina)
+      
+      update-alternatives --config java (vai mostrar as instalações do java na maquina) 
+      
+      Caso o comando acima de algum erro ou apareça apenas uma instalação veja como usar o update-alternatives --install
+      
+      java -version 
+
+      
+------[ Desinstalar Java
+    Removendo os alternativos
+        update-alternatives --remove "java" "/usr/lib/jvm/jdk[version]/bin/java"
+        fazer a mesma coisa para o javac, jar e javaws
+        
+    Apague o diretorio /usr/lib/jvm/jdk[version]
+    
+    Removendo o OpenJDK
+        apt-get remove --auto-remove OpenJDK* ou
+        apt-get purge OpenJDK*
+        
+        
+
+------[ Instalando o GParted e outras ferramentas úteis no Debian
+   apt install gparted
+   apt install aptitude build-essential most cups-pdf poppler-utils
+
+
+------[ Habilitando o sudo no Debian 9 "Stretch" (opcional)
+   apt install sudo
+   
+   E adicione o seu usuário ao grupo "sudo" com o comando:
+      adduser usuario sudo
+
+------[ Instalando o anki
+   Site para download: https://apps.ankiweb.net/
+   
+   para instalar
+      $ tar xjf Downloads/anki-2.1.5-amd64.tar.bz2
+      $ cd anki-x.x.x
+      $ sudo make install
+      
+   Ele instala fora do diretório /opt
+   Coloquei o código fonte no diretório /opt
+   
+   para os audios do anki funcionar temos que instalar o Mplayer
+
+
+------[ Instalando o arduino IDE 
+   Site para download: https://www.arduino.cc/en/Main/Software
+   
+   para instalar
+      tar xf arduino.1.8.6-linux.tar.xz
+      cd arduino.x.x.x
+      /install.sh
+      
+      Eu movi o diretorio do arduino para /opt antes de executar o /install.sh
+      
+------[ Desinstalar programas instalados com o make install --------------------------------
+   make uninstall (na pasta onde está o codigo fonte)
+   
+   caso não tenha 
+      make -n install (para analisar o que será executado pelo make e assim podermos remover)
+      
+
+        ################# PESQUISAR ESSES PACOTES ##################
+  VIDEOS https://www.youtube.com/watch?v=4rwfaFmxtzM (25 minutos)
+       git curl vlc kdenlive build-essential simplescreenrecorder gimp 
+       
+       tem umas extensões bacanas para instalar
 
 
